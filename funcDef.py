@@ -9,8 +9,8 @@ def checkPackageManager():
 def installPackage(software):
     runCommand(f"sudo {checkPackageManager()} install {software}")
 
-def cloneRepo(repo):
-    runCommand(f"git clone {repo}")
+def cloneRepo(ssl,repo):
+    runCommand(f"git clone -c http.sslVerify={ssl} {repo}")
 
 def buildRepo(sourceCodeDir):
-    runCommand(f"cd {sourceCodeDir} && mkdir build&& cmake ..&& make&& make install")
+    runCommand(f"cd {sourceCodeDir} &&mkdir build &&cd build && cmake .. &&make && make install")
